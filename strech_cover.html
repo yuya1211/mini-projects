@@ -1,0 +1,85 @@
+
+<!DOCTYPE html >
+<html lang="en" class="no-js">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Mobile Specific Metas  ================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!-- CORE CONCRETE  ================================================== -->
+<script type="text/javascript">var BOOTSTRAP_VERSION ="bootstrap";
+	var BOOTSTRAP_JS_HEAD =1;
+	var BOOTSTRAP_CDN_ENABLE =0; var BOOTSTRAP_NAVBAR_TYPE =0; var BOOTSTRAP_LOGO_OPTION =1; var BOOTSTRAP_NAVBAR =1; var BootstrapInputFix =true;var BootstrapNavbarLineHeightFix =true;var BOOTSTRAP_EDT= 0; </script>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Bootstrap :: Cover</title>
+<meta name="description" content="" />
+<meta name="generator" content="concrete5 - 5.6.3.1" />
+<script type="text/javascript">
+var CCM_DISPATCHER_FILENAME = '/index.php';
+var CCM_CID = 1775;
+var CCM_EDIT_MODE = false;
+var CCM_ARRANGE_MODE = false;
+var CCM_IMAGE_PATH = "/concrete/images";
+var CCM_TOOLS_PATH = "/index.php/tools/required";
+var CCM_BASE_URL = "http://bootstraptheme.com";
+var CCM_REL = "";
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="./style/fireworks.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./demo-only/demo.css" media="screen" />
+<script type="text/javascript" src="./demo-only/demo.js"></script>
+<!--script type="text/javascript" src="script/debug.js"></script-->
+<script type="text/javascript" src="./script/soundmanager2-nodebug-jsmin.js"></script>
+<script type="text/javascript" src="./script/fireworks.js"></script>
+<script type="text/javascript" src="http://cdn.bootstraptheme.com/concrete/js/jquery.js"></script>
+<script type="text/javascript" src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.bootstraptheme.com/packages/pro_image/blocks/pro_image/templates/background_img/view.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.bootstraptheme.com/packages/pro_image/blocks/pro_image/templates/background_img/css/view.css" />
+<script type="text/javascript" src="http://cdn.bootstraptheme.com/packages/pro_image/blocks/pro_image/templates/background_img/js/jquery.backstretch.min.js"></script>
+<!--[if gte IE 9]>
+<script src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/modernizr.js"></script>
+<![endif]-->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>	
+	
+	<script src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/html5shiv.js"></script>
+	<script src="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/respond.min.js"></script>
+    <link href="http://cdn.bootstraptheme.com/packages/bootstrap/js/common/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+    <link href="/packages/bootstrap/js/common/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+    <script src="/packages/bootstrap/js/common/respond.proxy.js"></script>
+	
+<![endif]-->
+
+</head>
+<body >
+<div id="fireworks-template">
+ <div id="fw" class="firework"></div>
+ <div id="fp" class="fireworkParticle"><img src="image/particles.gif"/></div>
+</div>
+<div id="fireContainer"></div>
+
+
+
+          <div class="inner cover">
+            
+<script>
+    $.backstretch("./christmas-time.jpg");
+</script>
+          </div>
+<ul>
+
+  <li><a href="#" onclick="createFirework(100,100,1,null,50,100,50,50,false,true);return false" title="I swear it looks like the Apple key, really!">Apple Key-esque</a></li>
+  <li><a href="#" onclick="createFirework(11,30,3,4,null,null,null,null,false,true);return false" title="Standard-issue.">Standard Circle</a></li>
+  <li><a href="#" onclick="createFirework(25,187,5,1,null,null,null,null,false,true);return false" title="The usual, a bit more filled-out.">Concentric Circles</a></li>
+  <li><a href="#" onclick="createFirework(66,139,4,5,1,1,97,96,true,true);return false" title="Nowhere else to go but up and out.">Cornered</a></li>
+  <li><a href="#" onclick="createFirework(38,128,2,null,49,2,50,100,false,true);return false" title="Particles bounce from the bottom.">Semicircle</a></li>
+  <li><a href="#" onclick="createFirework(100,800,8,5,1,100,50,50,false,false);return false" title="Give this one time to start..">CPU-heavy</a></li>
+  <li><a href="#" onclick="var r=4+parseInt(Math.random()*16);for(var i=r; i--;){setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)',(i+1)*(1+parseInt(Math.random()*1000)));}return false" title="A number of randomly-timed explosions.">Sequence: Explosions</a></li>
+
+ </ul>
+  
+</body>
+</html>
