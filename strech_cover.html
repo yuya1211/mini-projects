@@ -71,19 +71,9 @@ var CCM_REL = "";
     $.backstretch("./christmas-time.jpg");
 </script>
           </div>
-<ul>
 
-  <li><a href="#" onclick="createFirework(100,100,1,null,50,100,50,50,false,true);return false" title="I swear it looks like the Apple key, really!">Apple Key-esque</a></li>
-  <li><a href="#" onclick="createFirework(11,30,3,4,null,null,null,null,false,true);return false" title="Standard-issue.">Standard Circle</a></li>
-  <li><a href="#" onclick="createFirework(25,187,5,1,null,null,null,null,false,true);return false" title="The usual, a bit more filled-out.">Concentric Circles</a></li>
-  <li><a href="#" onclick="createFirework(66,139,4,5,1,1,97,96,true,true);return false" title="Nowhere else to go but up and out.">Cornered</a></li>
-  <li><a href="#" onclick="createFirework(38,128,2,null,49,2,50,100,false,true);return false" title="Particles bounce from the bottom.">Semicircle</a></li>
-  <li><a href="#" onclick="createFirework(100,800,8,5,1,100,50,50,false,false);return false" title="Give this one time to start..">CPU-heavy</a></li>
-  <li><a href="#" onclick="var r=4+parseInt(Math.random()*16);for(var i=r; i--;){setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)',(i+1)*(1+parseInt(Math.random()*1000)));}return false" title="A number of randomly-timed explosions.">Sequence: Explosions</a></li>
-
- </ul>
  <script type="text/javascript" charset="utf-8">
-			var w = 960, h = 500;
+			var w = $( document ).width(), h = $( document ).height()/2;
 
 			var labelDistance = 0;
 
@@ -93,11 +83,17 @@ var CCM_REL = "";
 			var labelAnchors = [];
 			var labelAnchorLinks = [];
 			var links = [];
-
-			for(var i = 0; i < 30; i++) {
+			
+			for(var i = 0; i < 8; i++) {
+			 	if ( i == 0 ) {
+			 		var node = {label: "Start from here"};
+			 	}else if( i ==7 ){
+			 		//var node = {label: "End"};
+			 	}else{			 	
 				var node = {
-					label : "node " + i
+					//label : "node " + i
 				};
+				}
 				nodes.push(node);
 				labelAnchors.push({
 					node : node
@@ -108,45 +104,46 @@ var CCM_REL = "";
 			};
 
 			for(var i = 0; i < nodes.length; i++) {
-				for(var j = 0; j < i; j++) {
-					if(Math.random() > .95)
+				if (i < nodes.length - 1)
 						links.push({
 							source : i,
-							target : j,
-							weight : Math.random()
+							target : i+1,
+							weight : 1
 						});
-				}
+				
 				labelAnchorLinks.push({
-					source : i * 2,
+					source : i ,
 					target : i * 2 + 1,
 					weight : 1
 				});
 			};
 
-			var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(50).charge(-3000).linkStrength(function(x) {
+			var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(0.1).linkDistance(100).charge(-750).linkStrength(function(x) {
 				return x.weight * 10
 			});
 
 
 			force.start();
 
-			var force2 = d3.layout.force().nodes(labelAnchors).links(labelAnchorLinks).gravity(0).linkDistance(0).linkStrength(8).charge(-100).size([w, h]);
+			var force2 = d3.layout.force().nodes(labelAnchors).links(labelAnchorLinks).gravity(0.1).linkDistance(0).linkStrength(8).charge(-1000).size([w, h]);
 			force2.start();
 
 			var link = vis.selectAll("line.link").data(links).enter().append("svg:line").attr("class", "link").style("stroke", "#CCC");
 
 			var node = vis.selectAll("g.node").data(force.nodes()).enter().append("svg:g").attr("class", "node");
-			node.append("svg:circle").attr("r", 5).style("fill", "#555").style("stroke", "#FFF").style("stroke-width", 3);
+			node.append("svg:circle").attr("r", 5).style("fill", "#ffd700").style("stroke", "#ffe811").style("stroke-width", 1);
 			node.call(force.drag);
+			
 
 
-			var anchorLink = vis.selectAll("line.anchorLink").data(labelAnchorLinks)//.enter().append("svg:line").attr("class", "anchorLink").style("stroke", "#999");
+			var anchorLink = vis.selectAll("line.anchorLink").data(labelAnchorLinks)
+			//.enter().append("svg:line").attr("class", "anchorLink").style("stroke", "#999");
 
 			var anchorNode = vis.selectAll("g.anchorNode").data(force2.nodes()).enter().append("svg:g").attr("class", "anchorNode");
 			anchorNode.append("svg:circle").attr("r", 0).style("fill", "#FFF");
 				anchorNode.append("svg:text").text(function(d, i) {
 				return i % 2 == 0 ? "" : d.node.label
-			}).style("fill", "#555").style("font-family", "Arial").style("font-size", 12);
+			}).style("fill", "#ffd700").style("font-family", "Arial").style("font-size", 12);
 
 			var updateLink = function() {
 				this.attr("x1", function(d) {
@@ -203,6 +200,17 @@ var CCM_REL = "";
 			});
 
 		</script>
+		<ul>
+
+  <li><a href="#" onclick="createFirework(100,100,1,null,50,100,50,50,false,true);return false" title="I swear it looks like the Apple key, really!">Apple Key-esque</a></li>
+  <li><a href="#" onclick="createFirework(11,30,3,4,null,null,null,null,false,true);return false" title="Standard-issue.">Standard Circle</a></li>
+  <li><a href="#" onclick="createFirework(25,187,5,1,null,null,null,null,false,true);return false" title="The usual, a bit more filled-out.">Concentric Circles</a></li>
+  <li><a href="#" onclick="createFirework(66,139,4,5,1,1,97,96,true,true);return false" title="Nowhere else to go but up and out.">Cornered</a></li>
+  <li><a href="#" onclick="createFirework(38,128,2,null,49,2,50,100,false,true);return false" title="Particles bounce from the bottom.">Semicircle</a></li>
+  <li><a href="#" onclick="createFirework(100,800,8,5,1,100,50,50,false,false);return false" title="Give this one time to start..">CPU-heavy</a></li>
+  <li><a href="#" onclick="var r=4+parseInt(Math.random()*16);for(var i=r; i--;){setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)',(i+1)*(1+parseInt(Math.random()*1000)));}return false" title="A number of randomly-timed explosions.">Sequence: Explosions</a></li>
+
+ </ul>
   
 </body>
 </html>
