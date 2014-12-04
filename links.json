@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
         "source": 0,
         "target": 1
     },
@@ -40,4 +41,41 @@
         "target": 10
     }
    
+=======
+        "name": "Creighton Hospital"
+    },
+    {
+        "name": "Heart Hospital"
+    },
+    {
+        "name": "Marshall Regional Medical Center"
+    },
+    {
+        "name": "McKennan Hospital & University Health Center"
+    },
+    {
+        "name": "Queen of Peace Hospital"
+    },
+    {
+        "name": "Sacred Heart Hospital"
+    },
+    {
+        "name": "St. Luke's Hospital"
+    },
+    {
+        "name": "St. Mary's Hospital"
+    },
+    {
+        "name": "Milbank Area Hospital"
+    },
+    {
+        "name": "Pipestone County Medical Center"
+    },
+    {
+        "name": "St. Michael's Hospital"
+    },
+    {
+        "name": "Wagner Community Memorial Hospital"
+    }
+>>>>>>> 8accd50a12c7c473389a894a573dd6ae14479937
 ]

@@ -52,6 +52,16 @@ var CCM_REL = "";
     <script src="/packages/bootstrap/js/common/respond.proxy.js"></script>
 	
 <![endif]-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script type="text/javascript">
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+        placement : 'buttom'
+    });
+});
+</script>
+
 <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.6.0"></script>
 <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?2.6.0"></script>
 <script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.js?2.6.0"></script>
@@ -65,6 +75,13 @@ var CCM_REL = "";
   </script>
 </head>
 <body >
+<div class="bs-example">
+    <button type="button" class="btn btn-primary" data-toggle="popover" title="Popover title" data-content="Default popover">Popover</button>
+    <button type="button" class="btn btn-success" data-toggle="popover" title="Popover title" data-content="Another popover">Another popover</button>
+    <button type="button" class="btn btn-info" data-toggle="popover" title="Popover title" data-content="A larger popover to demonstrate the max-width of the Bootstrap popover.">Large popover</button>
+    <button type="button" class="btn btn-warning" data-toggle="popover" title="Popover title" data-content="The last popover!">Last popover</button>
+</div>
+
 <div id="fireworks-template">
  <div id="fw" class="firework"></div>
  <div id="fp" class="fireworkParticle"><img src="image/particles.gif"/></div>
@@ -352,6 +369,9 @@ function dragstart(d) {
 
 </script>-->
 <script>
+var r=4+parseInt(Math.random()*16);
+for(var i=r; i--;)
+{setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)',(i+1)*(1+parseInt(Math.random()*1000)));}
 var height = $( document ).height()-10, width = $( document ).width();
 
 
@@ -383,7 +403,8 @@ d3.json("graph.json", function(error, json) {
       .call(force.drag);
 
   node.append("image")
-      .attr("xlink:href", "http://icons.iconarchive.com/icons/gpritiranjan/simple-christmas/512/snowflake-icon.png")
+      //.attr("xlink:href", "http://icons.iconarchive.com/icons/gpritiranjan/simple-christmas/512/snowflake-icon.png")
+      .attr("xlink:href", "snowflakes.png")
       .attr("x", -8)
       .attr("y", -8)
       .attr("width", 50)
@@ -403,6 +424,7 @@ d3.json("graph.json", function(error, json) {
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
 });
+
 
 </script>
   
