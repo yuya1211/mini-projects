@@ -57,7 +57,7 @@ var CCM_REL = "";
 <script type="text/javascript">
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover({
-        placement : 'buttom'
+        placement : 'bottom'
     });
 });
 </script>
@@ -75,12 +75,7 @@ $(document).ready(function(){
   </script>
 </head>
 <body >
-<div class="bs-example">
-    <button type="button" class="btn btn-primary" data-toggle="popover" title="Popover title" data-content="Default popover">Popover</button>
-    <button type="button" class="btn btn-success" data-toggle="popover" title="Popover title" data-content="Another popover">Another popover</button>
-    <button type="button" class="btn btn-info" data-toggle="popover" title="Popover title" data-content="A larger popover to demonstrate the max-width of the Bootstrap popover.">Large popover</button>
-    <button type="button" class="btn btn-warning" data-toggle="popover" title="Popover title" data-content="The last popover!">Last popover</button>
-</div>
+
 
 <div id="fireworks-template">
  <div id="fw" class="firework"></div>
@@ -368,12 +363,16 @@ function dragstart(d) {
 
 
 </script>-->
+
+<a href="#" onclick="createFirework(11,30,3,4,null,null,null,null,false,true);return false" title="Standard-issue.">Standard Circle</a>
+<a href="#" onclick="createFirework(25,187,5,1,null,null,null,null,false,true);return false" title="The usual, a bit more filled-out.">Concentric Circles</a>
 <script>
+createFirework(25,187,5,1,null,null,null,null,false,true);
+//createFirework(11,30,3,4,null,null,null,null,false,true);
 var r=4+parseInt(Math.random()*16);
 for(var i=r; i--;)
 {setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)',(i+1)*(1+parseInt(Math.random()*1000)));}
-var height = $( document ).height()-10, width = $( document ).width();
-
+var height = $( document ).height(), width = $( document ).width();
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -385,7 +384,7 @@ var force = d3.layout.force()
     .charge(-100)
     .size([width, height]);
 
-d3.json("graph.json", function(error, json) {
+d3.json("message.json", function(error, json) {
   force
       .nodes(json.nodes)
       .links(json.links)
@@ -395,7 +394,7 @@ d3.json("graph.json", function(error, json) {
       .data(json.links)
     .enter().append("line")
       .attr("class", "link");
-
+     
   var node = svg.selectAll(".node")
       .data(json.nodes)
     .enter().append("g")
@@ -411,12 +410,13 @@ d3.json("graph.json", function(error, json) {
       .attr("height", 50);
 
   node.append("text")
-      .attr("dx", 12)
-      .attr("dy", ".35em")
+      .attr("dx", 40)
+      .attr("dy", 0)
+      .attr("fill", "white")
       .text(function(d) { return d.name });
       
-svg.selectAll(".node").each( function(d){ $(this).popover({title:"title", content:d.y, container:"body"});});
-
+svg.selectAll(".node").each( function(d){ $(this).popover({ content:d.msg, container:"body"});});
+//onclick event
   force.on("tick", function() {
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
