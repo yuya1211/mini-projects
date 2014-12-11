@@ -366,9 +366,10 @@ function dragstart(d) {
 
 <a href="#" onclick="createFirework(11,30,3,4,null,null,null,null,false,true);return false" title="Standard-issue.">Standard Circle</a>
 <a href="#" onclick="createFirework(25,187,5,1,null,null,null,null,false,true);return false" title="The usual, a bit more filled-out.">Concentric Circles</a>
-<script>
-createFirework(25,187,5,1,null,null,null,null,false,true);
+<script type="text/javascript">
+//createFirework(25,187,5,1,null,null,null,null,false,true);
 //createFirework(11,30,3,4,null,null,null,null,false,true);
+
 var r=4+parseInt(Math.random()*16);
 for(var i=r; i--;)
 {setTimeout('createFirework(8,14,2,null,null,null,null,null,Math.random()>0.5,true)',(i+1)*(1+parseInt(Math.random()*1000)));}
@@ -417,6 +418,8 @@ d3.json("message.json", function(error, json) {
       
 svg.selectAll(".node").each( function(d){ $(this).popover({ content:d.msg, container:"body"});});
 //onclick event
+
+svg.selectAll(".node").on("click", function(d){ createFirework(25,187,5,1,null,null,null,null,false,true); });
   force.on("tick", function() {
     link.attr("x1", function(d) { return d.source.x; })
         .attr("y1", function(d) { return d.source.y; })
