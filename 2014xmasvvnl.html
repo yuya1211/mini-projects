@@ -412,11 +412,12 @@ d3.json("msgvvnl.json", function(error, json) {
   node.append("text")
       .attr("dx", 40)
       .attr("dy", 0)
-      .attr("fill", "white")
+      .attr("fill", "red")
       .text(function(d) { return d.name });
+
+
       
 svg.selectAll(".node").each( 
-
   function(d){ $(this).popover({ placement : 'bottom', content:d.msg, container:"body"});});
   //if (!$(this).is(d.target) && $(this).has(d.target).length === 0 && $('.popover').has(d.target).length === 0) {
    //         $(this).popover('hide');}
